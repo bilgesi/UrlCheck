@@ -1,0 +1,92 @@
+﻿@model IEnumerable<UrlCheck.Models.UrlCheckLog>
+@{
+    ViewData["Title"] = "Details";
+    UrlList urlList = ViewBag.urlList;
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>UrlList</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => urlList.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => urlList.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => urlList.Url)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => urlList.Url)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => urlList.Email)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => urlList.Email)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => urlList.CreatedDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => urlList.CreatedDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => urlList.CreatedUserEmail)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => urlList.CreatedUserEmail)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="UrlCheckRun" asp-route-id="@urlList?.Id">Url Check</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Url
+            </th>
+            <th>
+                is Up
+            </th>
+            <th>
+                CreatedDate
+            </th>
+            <th>
+                CreatedUserEmail
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @(item.Id)
+                </td>
+                <td>
+                    @(item.Url)
+                </td>
+                <td>
+                    @(item.IsUrlUp)
+                </td>
+                <td>
+                    @(item.CreatedDate)
+                </td>
+                <td>
+                    @(item.CreatedUserEmail)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
